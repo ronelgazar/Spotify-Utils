@@ -1,6 +1,6 @@
 # Spotify-utils
 
-###Made by: Ron Elgazar
+### Made by: Ron Elgazar
 
 
 Inspired by:The code for Tech With Tim's "Django & React Full Stack Web App Tutorial" series.
