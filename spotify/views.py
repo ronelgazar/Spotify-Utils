@@ -151,3 +151,30 @@ class SkipSong(APIView):
             vote.save()
 
         return Response({}, status.HTTP_204_NO_CONTENT)
+
+class PrevSong(APIView):
+    def post(self, request, format=None):
+        room_code = self.request.session.get('room_code')
+        room = Room.objects.filter(code=room_code)[0]
+        votes = Vote.objects.filter(room=room, song_id=room.current_song)
+        votes_needed = room.votes_to_skip
+
+        if self.request.session.session_key == room.host or len(votes) + 1 >= votes_needed:
+            votes.delete()
+            previous_song(room.host)
+        else:
+            vote = Vote(user=self.request.session.session_key,
+                        room=room, song_id=room.current_song)
+            vote.save()
+
+        return Response({}, status.HTTP_204_NO_CONTENT)
+
+class Volume(APIView):
+    def put(self, response, format=None):
+        room_code = self.request.session.get('room_code')
+        room = Room.objects.filter(code=room_code)[0]
+        if self.request.session.session_key == room.host or room.guest_can_pause:
+            volume_percent(room.host)
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        return Response({}, status=status.HTTP_403_FORBIDDEN)
