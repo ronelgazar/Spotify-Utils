@@ -38,9 +38,6 @@ export default class HomePage extends Component {
           <Typography variant="h3" compact="h3">
             Spotify-Utils
           </Typography>
-          <Typography variant="h3" compact="h3">
-            By: Ron Elgazar,Inspired by Tech With Tim's "Django & React Full Stack Web App Tutorial" series
-          </Typography>
         </Grid>
         <Grid item xs={12} align="center">
           <ButtonGroup disableElevation variant="contained" color="primary">

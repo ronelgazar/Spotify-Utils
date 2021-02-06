@@ -10,7 +10,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import ContinuousSlider from "./Volume";
+import InputSlider from "./Volume";
 
 export default class MusicPlayer extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ export default class MusicPlayer extends Component {
 
             </div>
             <div>
-                <ContinuousSlider></ContinuousSlider>
+                <InputSlider></InputSlider>
             </div>
           </Grid>
         </Grid>
